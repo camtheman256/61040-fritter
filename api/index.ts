@@ -9,6 +9,9 @@ import dotenv from 'dotenv';
 import * as userValidator from '../server/user/middleware';
 import {userRouter} from '../server/user/router';
 import {freetRouter} from '../server/freet/router';
+import communityRouter from '../server/community/router';
+import briefingRouter from '../server/briefing/router';
+import feedRouter from '../server/feed/router';
 import MongoStore from 'connect-mongo';
 
 // Load environmental variables
@@ -21,7 +24,7 @@ if (!mongoConnectionUrl) {
 }
 
 const client = mongoose
-  .connect(mongoConnectionUrl)
+  .connect(mongoConnectionUrl, {dbName: process.env.DB_NAME})
   .then(m => {
     console.log('Connected to MongoDB');
     return m.connection.getClient();
@@ -70,6 +73,9 @@ app.use(userValidator.isCurrentSessionUserExists);
 // Add routers from routes folder
 app.use('/api/users', userRouter);
 app.use('/api/freets', freetRouter);
+app.use('/api/communities', communityRouter);
+app.use('/api/feed', feedRouter);
+app.use('/api/briefing', briefingRouter);
 
 // Catch all the other routes and display error message
 app.all('*', (req: Request, res: Response) => {

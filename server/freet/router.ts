@@ -4,6 +4,7 @@ import FreetCollection from './collection';
 import * as userValidator from '../user/middleware';
 import * as freetValidator from '../freet/middleware';
 import * as util from './util';
+import {Types} from 'mongoose';
 
 const router = express.Router();
 
@@ -127,6 +128,21 @@ router.patch(
     res.status(200).json({
       message: 'Your freet was updated successfully.',
       freet: util.constructFreetResponse(freet)
+    });
+  }
+);
+
+router.delete(
+  '/:freetId?/community',
+  [
+    userValidator.isUserLoggedIn,
+    freetValidator.isFreetExists,
+    freetValidator.isValidCommunityModifier
+  ],
+  async (req: Request, res: Response) => {
+    await FreetCollection.detachOne(new Types.ObjectId(req.params.freetId));
+    res.status(200).json({
+      message: 'This freet was detached successfully.'
     });
   }
 );
