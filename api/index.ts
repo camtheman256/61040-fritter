@@ -61,7 +61,7 @@ app.use(session({
   saveUninitialized: false,
   store: MongoStore.create({
     clientPromise: client,
-    dbName: 'sessions',
+    dbName: process.env.DB_NAME,
     autoRemove: 'interval',
     autoRemoveInterval: 10 // Minutes
   })
