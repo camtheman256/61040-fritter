@@ -8,6 +8,12 @@
     <header>
       <h3 class="author">
         @{{ freet.author }}
+        <span
+          v-if="freet.community"
+          class="community"
+        >
+          posted to &{{ freet.community.name }}
+        </span>
       </h3>
       <div
         v-if="$store.state.username === freet.author"
@@ -170,6 +176,13 @@ export default {
 .freet {
     border: 1px solid #111;
     padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
     position: relative;
 }
+
+h3 {
+  margin-top: 0;
+}
+
 </style>

@@ -18,6 +18,12 @@
           :value="field.value"
           @input="field.value = $event.target.value"
         />
+        <div
+          v-if="field.max"
+          :class="{over: field.value.length > field.max}"
+        >
+          {{ field.value.length }}/{{ field.max }}
+        </div>
         <input
           v-else
           :type="field.id === 'password' ? 'password' : 'text'"
@@ -124,6 +130,7 @@ form {
   justify-content: space-between;
   margin-bottom: 14px;
   position: relative;
+  border-radius: 5px;
 }
 
 article > div {

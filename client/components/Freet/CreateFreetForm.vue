@@ -12,7 +12,8 @@ export default {
       method: 'POST',
       hasBody: true,
       fields: [
-        {id: 'content', label: 'Content', value: ''}
+        {id: 'content', label: 'Content', value: '', max: 140},
+        {id: 'community', label: 'Community', value: ''}
       ],
       title: 'Create a freet',
       refreshFreets: true,
@@ -25,3 +26,10 @@ export default {
   }
 };
 </script>
+
+<style>
+.over {
+  font-weight: bold;
+  color: red;
+}
+</style>

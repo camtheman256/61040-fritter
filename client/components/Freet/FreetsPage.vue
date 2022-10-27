@@ -84,6 +84,10 @@ header, header > * {
     align-items: center;
 }
 
+h3 {
+  font-weight: 400;
+}
+
 button {
     margin-right: 10px;
 }

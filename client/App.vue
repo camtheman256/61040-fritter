@@ -40,6 +40,7 @@ body {
   padding: 0;
   margin: 0;
   font-size: 1.2em;
+  font-family: 'Lora', serif;
 }
 
 main {
@@ -73,5 +74,23 @@ main {
 
 .alerts .success {
     background-color: rgb(45, 135, 87);
+}
+
+button {
+  border-radius: 5px;
+  padding: 5px 15px;
+  background-color: #fff;
+  border: 1px solid black;
+  transition: all 0.2s ease-in-out;
+  font-family: inherit;
+}
+
+button:hover {
+  box-shadow: 4px 4px black;
+}
+
+button:active {
+  box-shadow: none;
+  background-color: lightgray;
 }
 </style>

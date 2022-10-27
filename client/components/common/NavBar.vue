@@ -42,11 +42,11 @@
 <style scoped>
 nav {
     padding: 1vw 2vw;
-    background-color: #ccc;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
+    border-bottom: 1px dotted black;
 }
 
 .title {
@@ -73,6 +73,8 @@ img {
 
 .right a {
     margin-left: 5px;
+    text-decoration: none;
+    color: blue;
 }
 
 .alerts {
