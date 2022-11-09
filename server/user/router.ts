@@ -24,7 +24,7 @@ router.get(
     const user = await UserCollection.findOneByUserId(req.session.userId);
     res.status(200).json({
       message: 'Your session info was found successfully.',
-      user: user ? util.constructUserResponse(user) : null
+      user: user ? await util.constructUserResponse(user) : null
     });
   }
 );
@@ -58,7 +58,7 @@ router.post(
     req.session.userId = user._id.toString();
     res.status(201).json({
       message: 'You have logged in successfully',
-      user: util.constructUserResponse(user)
+      user: await util.constructUserResponse(user)
     });
   }
 );
@@ -111,7 +111,7 @@ router.post(
     req.session.userId = user._id.toString();
     res.status(201).json({
       message: `Your account was created successfully. You have been logged in as ${user.username}`,
-      user: util.constructUserResponse(user)
+      user: await util.constructUserResponse(user)
     });
   }
 );
@@ -141,7 +141,7 @@ router.patch(
     const user = await UserCollection.updateOne(userId, req.body);
     res.status(200).json({
       message: 'Your profile was updated successfully.',
-      user: util.constructUserResponse(user)
+      user: await util.constructUserResponse(user)
     });
   }
 );

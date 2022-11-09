@@ -23,7 +23,7 @@
     </section>
     <section>
       <router-link to="/community">
-        Explore communities
+        Explore communities &rarr;
       </router-link>
     </section>
     <section>
@@ -35,6 +35,17 @@
               by @{{ $store.state.filter }}
             </span>
           </h2>
+          <div v-if="$store.state.username">
+            <p v-if="$store.state.filter && $store.state.filter != $store.state.username">
+              <FollowUserButton
+                :is-following="$store.state.following.some((u) => u.username === $store.state.filter)"
+                :user="$store.state.filter"
+              />
+            </p>
+            <p v-else>
+              To follow someone, first look up their freets.
+            </p>
+          </div>
         </div>
         <div class="right">
           <GetFreetsForm
@@ -67,10 +78,11 @@
 import FreetComponent from '@/components/Freet/FreetComponent.vue';
 import CreateFreetForm from '@/components/Freet/CreateFreetForm.vue';
 import GetFreetsForm from '@/components/Freet/GetFreetsForm.vue';
+import FollowUserButton from '@/components/Account/FollowUserButton.vue';
 
 export default {
   name: 'FreetPage',
-  components: {FreetComponent, GetFreetsForm, CreateFreetForm},
+  components: {FreetComponent, GetFreetsForm, CreateFreetForm, FollowUserButton},
   mounted() {
     this.$refs.getFreetsForm.submit();
   }
@@ -83,7 +95,7 @@ section {
   flex-direction: column;
 }
 
-header, header > * {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;

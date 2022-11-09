@@ -12,7 +12,9 @@ const store = new Vuex.Store({
     filter: null, // Username to filter shown freets by (null = show all)
     freets: [], // All freets created in the app
     username: null, // Username of the logged in user
-    alerts: {} // global success/error messages encountered during submissions to non-visible forms
+    alerts: {}, // global success/error messages encountered during submissions to non-visible forms
+    following: [], // set users that the current user follows
+    userId: null, // ID of the user
   },
   mutations: {
     alert(state, payload) {
@@ -24,12 +26,14 @@ const store = new Vuex.Store({
         Vue.delete(state.alerts, payload.message);
       }, 3000);
     },
-    setUsername(state, username) {
+    setUsername(state, user) {
       /**
        * Update the stored username to the specified one.
-       * @param username - new username to set
+       * @param username - the entire user object
        */
-      state.username = username;
+      state.userId = user ? user.userId : null;
+      state.username = user ? user.username : null;
+      state.following = user ? user.following : null;
     },
     updateFilter(state, filter) {
       /**

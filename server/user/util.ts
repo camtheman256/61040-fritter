@@ -25,9 +25,9 @@ const formatDate = (date: Date): string => moment(date).format('MMMM Do YYYY, h:
  * @param {HydratedDocument<User>} user - A user object
  * @returns {UserResponse} - The user object without the password
  */
-const constructUserResponse = (user: HydratedDocument<User>): UserResponse => {
+const constructUserResponse = async (user: HydratedDocument<User>): Promise<UserResponse> => {
   const userCopy: User = {
-    ...user.toObject({
+    ...(await user.populate(['following', 'followers'])).toObject({
       versionKey: false // Cosmetics; prevents returning of __v property
     })
   };
