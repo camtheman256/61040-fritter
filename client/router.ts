@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import FreetsPage from './components/Freet/FreetsPage.vue';
+import FreetView from './components/Freet/FreetView.vue';
 import CommunityPage from "./components/Community/CommunityPage.vue";
 import AccountPage from './components/Account/AccountPage.vue';
 import LoginPage from './components/Login/LoginPage.vue';
@@ -9,7 +10,8 @@ import NotFound from './NotFound.vue';
 Vue.use(VueRouter);
 
 const routes = [
-  {path: '/', name: 'Home', component: FreetsPage},
+  {path: '/', name: '', component: FreetsPage},
+  {path: '/freets', name: 'Explore', component: FreetView},
   {path: '/community', name: 'Community', component: CommunityPage},
   {path: '/account', name: 'Account', component: AccountPage},
   {path: '/login', name: 'Login', component: LoginPage},
