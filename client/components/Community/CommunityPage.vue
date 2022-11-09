@@ -16,15 +16,19 @@
       </form>
     </section>
     <section v-if="display">
-      <CommunityComponent :community="display.community" />
+      <CommunityComponent
+        :community="display.community"
+        @modified="getCommunity"
+      />
     </section>
   </main>
 </template>
 
 <script lang="ts">
 import CommunityComponent from "./CommunityComponent.vue";
+import Vue from 'vue';
 
-export default {
+export default Vue.extend({
   components: { CommunityComponent },
   data() {
     return {
@@ -44,7 +48,7 @@ export default {
       this.display = message;
     },
   },
-};
+});
 </script>
 
 <style scoped>

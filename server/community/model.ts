@@ -22,11 +22,11 @@ export type PopulatedCommunity = {
   /** The name of the community. Must be all lowercase, and unique. */
   name: string;
   /** Community members */
-  members: Types.ObjectId[];
+  members: User[];
   /** Moderators for the community, which have special permissions. */
   moderators: User[];
   /** Banned users for the community */
-  banned: Types.ObjectId[];
+  banned: User[];
 };
 
 const CommunitySchema = new Schema<Community>({

@@ -27,7 +27,7 @@ router.post('/', [userValidator.isUserLoggedIn, isCommunityNameValid], async (re
 });
 
 router.get('/:name', [isCommunityExists], async (req: Request, res: Response) => {
-  const community = await (await findOneByCommunityName(req.params.name)).populate('moderators');
+  const community = await (await findOneByCommunityName(req.params.name)).populate(['moderators', 'members', 'banned']);
   res.status(200).json({
     community
   });
@@ -49,7 +49,8 @@ router.put('/:name', [userValidator.isUserLoggedIn, isCommunityExists], async (r
 
   await community.save();
   res.status(200).json({
-    message: `Joined ${req.params.name} successfully.`
+    message: `Joined ${req.params.name} successfully.`,
+    community: await community.populate(['moderators', 'members', 'banned'])
   });
 });
 
@@ -59,7 +60,8 @@ router.delete('/:name', [userValidator.isUserLoggedIn, isCommunityExists], async
   community.members = community.members.filter(id => !id.equals(userId));
   await community.save();
   res.status(200).json({
-    message: `Left ${req.params.name} successfully.`
+    message: `Left ${req.params.name} successfully.`,
+    community: await community.populate(['moderators', 'members', 'banned'])
   });
 });
 
