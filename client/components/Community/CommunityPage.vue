@@ -21,15 +21,17 @@
         @modified="getCommunity"
       />
     </section>
+    <CreateCommunity />
   </main>
 </template>
 
 <script lang="ts">
 import CommunityComponent from "./CommunityComponent.vue";
 import Vue from 'vue';
+import CreateCommunity from "./CreateCommunity.vue";
 
 export default Vue.extend({
-  components: { CommunityComponent },
+  components: { CommunityComponent, CreateCommunity },
   data() {
     return {
       community: "",

@@ -7,7 +7,7 @@
     </p>
     <section v-if="$store.state.username">
       <h5 class="membership">
-        Change group membership:
+        Change community membership:
       </h5>
       <button
         v-if="
@@ -59,5 +59,9 @@ export default Vue.extend({
 <style>
 .membership {
   margin-bottom: 0.5rem;
+}
+
+.community {
+  margin-bottom: 2rem;
 }
 </style>
