@@ -10,7 +10,7 @@ import NotFound from './NotFound.vue';
 Vue.use(VueRouter);
 
 const routes = [
-  {path: '/', name: '', component: FreetsPage},
+  {path: '/', name: 'Home', component: FreetsPage},
   {path: '/freets', name: 'Explore', component: FreetView},
   {path: '/community', name: 'Community', component: CommunityPage},
   {path: '/account', name: 'Account', component: AccountPage},

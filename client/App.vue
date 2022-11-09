@@ -45,11 +45,16 @@ body {
   font-family: "Lora", serif;
 }
 
+main {
+  padding: 0 1em 1em;
+}
+
 @media screen and (min-width: 500px) {
   main {
     padding: 0 5em 5em;
   }
 }
+
 
 .alerts {
   position: absolute;

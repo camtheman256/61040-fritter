@@ -4,6 +4,7 @@ import {queryParameters} from '../feed/util';
 import {Types} from 'mongoose';
 import * as userValidator from '../user/middleware';
 import FreetModel from '../freet/model';
+import {constructFreetResponse} from '../freet/util';
 
 const router = express.Router();
 
@@ -13,11 +14,11 @@ router.get('/', [userValidator.isUserLoggedIn], async (req: Request, res: Respon
   const cutoff = new Date();
   cutoff.setHours(cutoff.getHours() - hours);
   const freets = await FreetModel.find(await queryParameters(userId))
-    .find({dateCreated: {$gte: cutoff}}).populate('authorId', 'community');
+    .find({dateCreated: {$gte: cutoff}}).populate(['authorId', 'community']);
   res.status(200).json({
     message: 'Briefing fetched successfully.',
     since: cutoff.toISOString(),
-    freets
+    freets: freets.map(constructFreetResponse)
   });
 });
 

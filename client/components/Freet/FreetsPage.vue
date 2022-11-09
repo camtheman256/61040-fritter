@@ -29,15 +29,17 @@
         Explore users and freets &rarr;
       </router-link>
     </section>
+    <BriefingComponent v-if="$store.state.username" />
   </main>
 </template>
 
 <script>
 import CreateFreetForm from '@/components/Freet/CreateFreetForm.vue';
+import BriefingComponent from '@/components/Briefing/BriefingComponent.vue';
 
 export default {
   name: 'FreetPage',
-  components: {CreateFreetForm},
+  components: {CreateFreetForm, BriefingComponent},
 };
 </script>
 

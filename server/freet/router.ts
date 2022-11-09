@@ -70,7 +70,7 @@ router.post(
   async (req: Request, res: Response) => {
     const userId = (req.session.userId as string) ?? ''; // Will not be an empty string since its validated in isUserLoggedIn
     let communityId = null;
-    if (typeof req.body.community === 'string') {
+    if (typeof req.body.community === 'string' && req.body.community) {
       const communityName = req.body.community as string ?? '';
       const community = await findOneByCommunityName(communityName);
       if (community === null) {
