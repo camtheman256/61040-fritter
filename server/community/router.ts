@@ -27,7 +27,7 @@ router.post('/', [userValidator.isUserLoggedIn, isCommunityNameValid], async (re
 });
 
 router.get('/:name', [isCommunityExists], async (req: Request, res: Response) => {
-  const community = await findOneByCommunityName(req.params.name);
+  const community = await (await findOneByCommunityName(req.params.name)).populate('moderators');
   res.status(200).json({
     community
   });

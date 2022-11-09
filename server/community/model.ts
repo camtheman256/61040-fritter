@@ -1,5 +1,6 @@
 import type {Types} from 'mongoose';
 import {model, SchemaTypes, Schema} from 'mongoose';
+import type {User} from '../user/model';
 
 /**
  * Type definition for Community in Fritter
@@ -12,6 +13,18 @@ export type Community = {
   members: Types.ObjectId[];
   /** Moderators for the community, which have special permissions. */
   moderators: Types.ObjectId[];
+  /** Banned users for the community */
+  banned: Types.ObjectId[];
+};
+
+export type PopulatedCommunity = {
+  _id: Types.ObjectId;
+  /** The name of the community. Must be all lowercase, and unique. */
+  name: string;
+  /** Community members */
+  members: Types.ObjectId[];
+  /** Moderators for the community, which have special permissions. */
+  moderators: User[];
   /** Banned users for the community */
   banned: Types.ObjectId[];
 };

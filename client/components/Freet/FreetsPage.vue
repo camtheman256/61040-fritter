@@ -22,6 +22,11 @@
       </article>
     </section>
     <section>
+      <router-link to="/community">
+        Explore communities
+      </router-link>
+    </section>
+    <section>
       <header>
         <div class="left">
           <h2>

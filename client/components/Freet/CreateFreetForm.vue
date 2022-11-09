@@ -12,7 +12,7 @@ export default {
       method: 'POST',
       hasBody: true,
       fields: [
-        {id: 'content', label: 'Content', value: '', max: 140},
+        {id: 'content', label: 'Content', value: '', max: 140, placeholder: "What's happening?"},
         {id: 'community', label: 'Community', value: ''}
       ],
       title: 'Create a freet',

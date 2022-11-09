@@ -16,6 +16,7 @@
           v-if="field.id === 'content'"
           :name="field.id"
           :value="field.value"
+          :placeholder="field.placeholder"
           @input="field.value = $event.target.value"
         />
         <div
