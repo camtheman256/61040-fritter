@@ -4,7 +4,6 @@
       <header>
         <h2>@{{ $store.state.username }}, see what's happening on Fritter</h2>
       </header>
-      <CreateFreetForm />
     </section>
     <section>
       <header>
@@ -56,14 +55,13 @@
 <script lang="ts">
 import Vue from 'vue'
 import FreetComponent from '@/components/Freet/FreetComponent.vue';
-import CreateFreetForm from '@/components/Freet/CreateFreetForm.vue';
 import GetFreetsForm from '@/components/Freet/GetFreetsForm.vue';
 import FollowUserButton from '@/components/Account/FollowUserButton.vue';
 
 
 export default Vue.extend({
   name: 'FreetView',
-  components: {FreetComponent, GetFreetsForm, CreateFreetForm, FollowUserButton},
+  components: {FreetComponent, GetFreetsForm, FollowUserButton},
   mounted() {
     this.$refs.getFreetsForm.submit();
   }

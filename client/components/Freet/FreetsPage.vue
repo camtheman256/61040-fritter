@@ -22,6 +22,13 @@
       </article>
     </section>
     <section>
+      <router-link
+        v-if="$store.state.username"
+        class="feed"
+        to="/feed"
+      >
+        📰 View your feed &rarr;
+      </router-link>
       <router-link to="/community">
         Explore communities &rarr;
       </router-link>
@@ -67,5 +74,10 @@ section .scrollbox {
   flex: 1 0 50vh;
   padding: 3%;
   overflow-y: scroll;
+}
+
+.feed {
+  font-size: x-large;
+  font-weight: bold;
 }
 </style>

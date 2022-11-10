@@ -6,12 +6,14 @@ import CommunityPage from "./components/Community/CommunityPage.vue";
 import AccountPage from './components/Account/AccountPage.vue';
 import LoginPage from './components/Login/LoginPage.vue';
 import NotFound from './NotFound.vue';
+import FeedPage from './components/Feed/FeedPage.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {path: '/', name: 'Home', component: FreetsPage},
   {path: '/freets', name: 'Explore', component: FreetView},
+  {path: '/feed', name: 'Feed', component: FeedPage},
   {path: '/community', name: 'Community', component: CommunityPage},
   {path: '/account', name: 'Account', component: AccountPage},
   {path: '/login', name: 'Login', component: LoginPage},
@@ -30,7 +32,7 @@ router.beforeEach((to, from, next) => {
       return;
     }
 
-    if (to.name === 'Account' && !router.app.$store.state.username) {
+    if (['Account', 'Feed'].includes(to.name) && !router.app.$store.state.username) {
       next({name: 'Login'}); // Go to Login page if user navigates to Account and are not signed in
       return;
     }

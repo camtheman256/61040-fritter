@@ -85,8 +85,9 @@ export default {
       if (this.hasBody) {
         options.body = JSON.stringify(Object.fromEntries(
           this.fields.map(field => {
-            const {id, value} = field;
+            let {id, value} = field;
             field.value = '';
+            if(field.type === 'int') value = parseInt(value)
             return [id, value];
           })
         ));

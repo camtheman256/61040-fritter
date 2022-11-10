@@ -11,7 +11,7 @@ import {queryParameters} from './util';
  * @returns a Feed
  */
 export async function createFeed(numFreets: number, pageLength: number, userId: Types.ObjectId) {
-  const freets = await FreetModel.find(await queryParameters(userId)).limit(numFreets);
+  const freets = await FreetModel.find(await queryParameters(userId)).sort({dateCreated: -1}).limit(numFreets);
   const feed = new FeedModel({
     user: userId,
     freets,

@@ -15,6 +15,7 @@
     </div>
     <FreetComponent
       v-for="freet in freets"
+      :key="freet.id"
       :freet="freet"
     />
   </article>
