@@ -6,7 +6,7 @@
       </header>
     </section>
     <section>
-      <header>
+      <header class="filter">
         <div class="left">
           <h2>
             Viewing all freets
@@ -78,6 +78,15 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    flex-direction: column;
+  }
+  .filter {
+    margin-bottom: 2rem;
+  }
 }
 
 h3 {
